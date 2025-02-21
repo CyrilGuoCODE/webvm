@@ -67,7 +67,7 @@ jobs:
 
             # We make sure Github Pages has been enabled for this repository.
             if [ "$?" -ne 0 ]; then
-              echo "::error title=Potential pages configuration error.::Please make sure you have enabled Github pages for the ${{ github.repository }} repository. If already enabled then Github pages might be down"
+              echo "::error title=Potential pages configuration error.::Please make sure you have enabled Github pages for the ${{ github.repository }} repository. If already enabled then Github pages[...]
               echo "terminate=true" >> $GITHUB_ENV
             fi
             set -e
@@ -156,7 +156,7 @@ jobs:
          sudo mount -o loop -t ext2 ${IMAGE_NAME} /mnt/
 
       # We opt for 'docker cp --archive' over 'docker save' since our focus is solely on the end product rather than individual layers and metadata.
-      # However, it's important to note that despite being specified in the documentation, the '--archive' flag does not currently preserve uid/gid information when copying files from the container to the host machine.
+      # However, it's important to note that despite being specified in the documentation, the '--archive' flag does not currently preserve uid/gid information when copying files from the container to[...]
       # Another compelling reason to use 'docker cp' is that it preserves resolv.conf.
       - name: Export and unpack container filesystem contents into mounted ext2 image.
         run: | 
@@ -210,7 +210,7 @@ jobs:
 
       # Create a gh-pages artifact in order to deploy to gh-pages.
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # Path of the directory containing the static assets for our gh pages deployment.
           path: ${{ env.DEPLOY_DIR }} # optional, default is _site/
